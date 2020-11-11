@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <style>
+        .data {
+            background-color: #b73ab3;
+            width: 50%;
+            margin-left: 270px;
+            height: 67px;
+            padding: 16px;
+            padding: 10x;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="Main">
+        <button id="btn">Click here! </button>
+        <div class="Section">
+
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#btn').click(function () {
+
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/posts',
+                    method: 'GET',
+                    success: function (params) {
+                        console.log(params)
+                        var data = '';
+
+                        $.each(params, function (key, val) {
+                            data += `<div class='data'> 
+                        <p> ${val.id} </p>
+                        <p> ${val.title} </p>
+                        </div>`
+
+                        });
+                        $('.Section').append(data)
+                    }
+
+
+                });
+            });
+
+        });
+    </script>
+</body>
+
+</html>
